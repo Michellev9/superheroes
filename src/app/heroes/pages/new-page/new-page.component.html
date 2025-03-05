@@ -1,0 +1,119 @@
+<mat-card class="hero-edit-card">
+  <mat-card-header>
+    <mat-card-title>Editar/Agregar Héroe</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <form class="grid-container" [formGroup]="heroForm" (ngSubmit)="onSubmit()">
+      <div class="form-container">
+        <div class="form-fields">
+          <mat-form-field appearance="outline">
+            <mat-label>Nombre del héroe</mat-label>
+            <input matInput placeholder="Ej: Spider-Man" formControlName="superhero" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Alter Ego</mat-label>
+            <input matInput placeholder="Ej: Peter Parker" formControlName="alter_ego" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Editorial</mat-label>
+            <input matInput placeholder="Ej: Marvel Comics" formControlName="publisher" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Primera Aparición</mat-label>
+            <input matInput placeholder="Ej: Amazing Fantasy #15" formControlName="first_appearance" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Personajes</mat-label>
+            <input matInput placeholder="Ej: Peter Parker" formControlName="characters" required>
+          </mat-form-field>
+
+          <!-- Campo para la URL de la imagen -->
+          <mat-form-field appearance="outline">
+            <mat-label>URL de la imagen</mat-label>
+            <input matInput placeholder="Ej: https://url-de-imagen.jpg" formControlName="alt_img" />
+          </mat-form-field>
+
+          <div class="button-group">
+            <button mat-button routerLink="/heroes/list" color="warn">Cancelar</button>
+            <button *ngIf="isEditMode" mat-flat-button color="warn" type="button" (click)="onDeleteHero()">
+                <mat-icon>delete</mat-icon> Eliminar </button>
+            <button mat-raised-button color="primary" type="submit"
+                [disabled]="heroForm.invalid">Guardar</button>
+
+        </div>
+
+          
+        </div>
+
+        <div class="image-container">
+          <mat-card>
+            <!-- Vista previa de la imagen cuando se ingresa la URL -->
+            <img *ngIf="heroForm.get('alt_img')?.value" [src]="heroForm.get('alt_img')?.value" alt="Vista previa de la imagen" mat-card-image />
+            <!-- Imagen predeterminada si no hay URL -->
+            <ng-template #defaultImage>
+              <img [src]="currentHero | heroImage" alt="Imagen del héroe" mat-card-image />
+            </ng-template>
+          </mat-card>
+        </div>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+
+<style>
+  .hero-edit-card {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    text-align: center;
+    border-radius: 12px;
+  }
+
+  .grid-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .form-container {
+    display: flex;
+    gap: 20px;
+    flex: 1;
+  }
+
+  .form-fields {
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1;
+    color: white;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+
+  button {
+    min-width: 150px;
+  }
+
+  .image-container {
+    flex-basis: 300px;
+    margin-left: 20px;
+  }
+
+  img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+</style>
