@@ -1,12 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404PageComponent } from './shared/pages/error404-page/error404-page.component';
+import { AuthGuard } from './auth/guards/auth.guard';
+import { PublicGuard } from './auth/guards/public.guard';
 
 //Definimos las rutas principales de la aplicación
 const routes: Routes = [
   {
     path: 'auth', //Ruta padre(inicial) para autenticación
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
+    canActivate: [PublicGuard],
+    canMatch: [PublicGuard]
     //Carga de módulo de autenticación/Lazy Loading carga el modulo de autenticación solo cuando se accede a auth
   },
    
@@ -14,6 +18,9 @@ const routes: Routes = [
     path: 'heroes', //Ruta padre(inicial) para herooes
     loadChildren: () =>
       import('./heroes/heroes.module').then((m) => m.HeroesModule),
+      canActivate: [AuthGuard],
+      canMatch: [AuthGuard]
+
     //Carga de módulo de autenticación/Lazy Loading carga el modulo de autenticación solo cuando se accede a heroes
   },
   {
