@@ -13,6 +13,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatInputModule } from '@angular/material/input';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { NavComponent } from './components/nav/nav.component';
 
 
 @NgModule({

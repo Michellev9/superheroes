@@ -24,7 +24,7 @@ const routes: Routes = [
     //Carga de módulo de autenticación/Lazy Loading carga el modulo de autenticación solo cuando se accede a heroes
   },
   {
-    path: '404', //Ruta padre(inicial)  para ala pagina de error 404
+    path: '404', //Ruta padre(inicial) para la pagina de error 404
     component: Error404PageComponent,
   },
   {

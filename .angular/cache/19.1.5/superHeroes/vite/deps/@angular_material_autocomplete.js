@@ -21,9 +21,6 @@ import {
 } from "./chunk-OF32Z2Y3.js";
 import "./chunk-5KBUSKY5.js";
 import {
-  NG_VALUE_ACCESSOR
-} from "./chunk-JVFZO55W.js";
-import {
   ActiveDescendantKeyManager,
   BreakpointObserver,
   Breakpoints,
@@ -54,6 +51,9 @@ import {
   Platform,
   _getEventTarget
 } from "./chunk-TBNLMSNT.js";
+import {
+  NG_VALUE_ACCESSOR
+} from "./chunk-JVFZO55W.js";
 import {
   DOCUMENT
 } from "./chunk-556KATUP.js";
